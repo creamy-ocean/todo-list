@@ -1,10 +1,10 @@
 import { v4 as uuidv4 } from "uuid";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const TodoListContext = createContext();
 
 export function TodoListProvider({ children }) {
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = useState(readTodosFromLocalStorage);
   const addTodo = (text) => {
     setTodoList((todos) => [
       ...todos,
@@ -25,6 +25,11 @@ export function TodoListProvider({ children }) {
     const todos = todoList.filter((todo) => todo.id !== deleted.id);
     setTodoList(todos);
   };
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todoList));
+  }, [todoList]);
+
   return (
     <TodoListContext.Provider
       value={{ todoList, addTodo, updateTodo, deleteTodo }}
@@ -32,4 +37,9 @@ export function TodoListProvider({ children }) {
       {children}
     </TodoListContext.Provider>
   );
+}
+
+function readTodosFromLocalStorage() {
+  const todos = localStorage.getItem("todos");
+  return todos ? JSON.parse(todos) : [];
 }
