@@ -20,6 +20,7 @@ export default function Todo({ todo }) {
   return (
     <li className={styles.todo}>
       <input
+        id={id}
         className={styles.checkbox}
         type="checkbox"
         checked={status === "completed"}
