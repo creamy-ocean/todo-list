@@ -1,18 +1,21 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { TodoListContext } from "../../context/TodoListContext";
 import Todo from "../../components/Todo/Todo";
 import AddTodo from "../../components/AddTodo/AddTodo";
+import styles from "./TodoList.module.css";
 
 export default function TodoList({ filter }) {
   const { todoList } = useContext(TodoListContext);
   const filtered = getFilteredTodos(todoList, filter);
   return (
-    <div>
-      {filtered.map((todo) => (
-        <Todo key={todo.id} todo={todo} />
-      ))}
+    <section className={styles.container}>
+      <ul className={styles.list}>
+        {filtered.map((todo) => (
+          <Todo key={todo.id} todo={todo} />
+        ))}
+      </ul>
       <AddTodo />
-    </div>
+    </section>
   );
 }
 

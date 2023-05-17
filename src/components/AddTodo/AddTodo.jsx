@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { TodoListContext } from "../../context/TodoListContext";
+import styles from "./AddTodo.module.css";
 
 export default function AddTodo() {
   const { addTodo } = useContext(TodoListContext);
@@ -16,17 +17,16 @@ export default function AddTodo() {
     setText("");
   };
   return (
-    <form onSubmit={handleAdd}>
-      <div className="add-todo-box">
-        <input
-          type="text"
-          name="text"
-          value={text}
-          placeholder="Add Todo"
-          onChange={handleChange}
-        ></input>
-        <button>Add</button>
-      </div>
+    <form className={styles.form} onSubmit={handleAdd}>
+      <input
+        className={styles.input}
+        type="text"
+        name="text"
+        value={text}
+        placeholder="Add Todo"
+        onChange={handleChange}
+      ></input>
+      <button className={styles.button}>Add</button>
     </form>
   );
 }

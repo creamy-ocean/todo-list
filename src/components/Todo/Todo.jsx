@@ -1,6 +1,7 @@
 import { BsFillTrashFill } from "react-icons/bs";
 import { TodoListContext } from "../../context/TodoListContext";
 import React, { useContext } from "react";
+import styles from "./Todo.module.css";
 
 export default function Todo({ todo }) {
   const { updateTodo, deleteTodo } = useContext(TodoListContext);
@@ -17,16 +18,21 @@ export default function Todo({ todo }) {
   };
 
   return (
-    <li>
+    <li className={styles.todo}>
       <input
+        className={styles.checkbox}
         type="checkbox"
         checked={status === "completed"}
         onChange={onUpdate}
       />
-      <label htmlFor={id}>{text}</label>
-      <button onClick={onDelete}>
-        <BsFillTrashFill />
-      </button>
+      <label htmlFor={id} className={styles.text}>
+        {text}
+      </label>
+      <span className={styles.icon}>
+        <button onClick={onDelete} className={styles.button}>
+          <BsFillTrashFill />
+        </button>
+      </span>
     </li>
   );
 }
