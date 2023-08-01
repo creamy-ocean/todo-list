@@ -20,7 +20,7 @@ export default function TodoList({ filter }) {
 }
 
 function getFilteredTodos(todos, filter) {
-  if (filter === "all") {
+  if (filter === "전체") {
     return todos;
   }
   return todos.filter((todo) => todo.status === filter);

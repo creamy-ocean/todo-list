@@ -11,7 +11,7 @@ export function TodoListProvider({ children }) {
       {
         id: uuidv4(),
         text,
-        status: "active",
+        status: "미완료",
       },
     ]);
   };

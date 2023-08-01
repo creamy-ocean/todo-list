@@ -23,10 +23,10 @@ export default function AddTodo() {
         type="text"
         name="text"
         value={text}
-        placeholder="Add Todo"
+        placeholder="투두 추가하기"
         onChange={handleChange}
       ></input>
-      <button className={styles.button}>Add</button>
+      <button className={styles.button}>추가</button>
     </form>
   );
 }

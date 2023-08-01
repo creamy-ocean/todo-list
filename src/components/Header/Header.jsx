@@ -1,6 +1,6 @@
 import { MdDarkMode } from "react-icons/md";
 import { BsSunFill } from "react-icons/bs";
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./Header.module.css";
 import { useDarkMode } from "../../context/DarkModeContext";
 

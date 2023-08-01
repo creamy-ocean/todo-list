@@ -9,7 +9,7 @@ export default function Todo({ todo }) {
   const { id, text, status } = todo;
 
   const onUpdate = (event) => {
-    const status = event.target.checked ? "completed" : "active";
+    const status = event.target.checked ? "완료" : "미완료";
     updateTodo({ ...todo, status });
   };
 
@@ -23,7 +23,7 @@ export default function Todo({ todo }) {
         id={id}
         className={styles.checkbox}
         type="checkbox"
-        checked={status === "completed"}
+        checked={status === "완료"}
         onChange={onUpdate}
       />
       <label htmlFor={id} className={styles.text}>
